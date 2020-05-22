@@ -1,0 +1,71 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1230px
+) !default;
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1170px
+) !default;
+
+@include _assert-ascending($container-max-widths, "$container-max-widths");
+
+$enable-grid-classes:         true !default;
+$grid-columns:                12 !default;
+$grid-gutter-width:           30px !default;
+$displays:                    none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$positions:                   static, relative, absolute, fixed, sticky !default;
+
+$zindex-sticky:               1020 !default;
+$zindex-fixed:                1030 !default;
+$zindex-modal-backdrop:       1040 !default;
+$zindex-modal:                1050 !default;
+
+$enable-grid-classes:         true !default;
+$enable-rounded:              true !default;
+$enable-transitions:          true !default;
+$enable-prefers-reduced-motion-media-query:   true !default;
+
+$transition-base:             all .2s ease-in-out !default;
+$transition-fade:             opacity .15s linear !default;
+$transition-collapse:         height .35s ease !default;
+
+@import "../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../node_modules/bootstrap/scss/mixins/grid-framework";
+@import "../node_modules/bootstrap/scss/mixins/grid";
+@import "../node_modules/bootstrap/scss/mixins/transition";
+@import "../node_modules/bootstrap/scss/mixins/border-radius";
+@import "../node_modules/bootstrap/scss/mixins/box-shadow";
+@import "../node_modules/bootstrap/scss/mixins/caret";
+@import "../node_modules/bootstrap/scss/vendor/rfs";
+
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/utilities/display";
+@import "../node_modules/bootstrap/scss/utilities/flex";
+@import "../node_modules/bootstrap/scss/utilities/position";
+@import "../node_modules/bootstrap/scss/utilities/spacing";
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .text#{$infix}-left   { text-align: left !important; }
+    .text#{$infix}-right  { text-align: right !important; }
+    .text#{$infix}-center { text-align: center !important; }
+  }
+}

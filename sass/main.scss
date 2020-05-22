@@ -1,0 +1,376 @@
+$color-main: #24282E;
+$color-white: #fff;
+$heroslide-back: radial-gradient(72.8% 72.8% at 81.01% 58.63%, rgba(20, 32, 40, 0.8) 0%, #142028 66.84%, #142028 100%);
+$dark-blue-back: #142028;
+
+@import "../sass/bootstrap.scss";
+
+/* @font-face {
+  font-family: 'Proxima Nova Rg';
+  src: url('../fonts/ProximaNova-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* @mixin font-regular {
+  font-family: 'Proxima Nova Rg', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+} */
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 320px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+img,
+svg {
+  vertical-align: top;
+}
+
+input,
+textarea,
+select {
+  appearance: none;
+}
+
+input,
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  &-menu {
+    flex-direction: row;
+
+    .content {
+      flex-grow: 1;
+    }
+  }
+}
+
+.form {
+  &-row {
+    margin-bottom: 20px;
+  }
+
+  &-radio {
+    margin-bottom: 15px;
+
+    input {
+      display: none;
+
+      &:checked {
+        ~ .form-radio-mark {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &-label {
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+      user-select: none;
+      color: #000;
+      font-weight: 300;
+    }
+
+    &-mark {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid #d1d6d9;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        display: block;
+        content: "";
+        width: 12px;
+        height: 12px;
+        background-color: $color-main;
+        border-radius: 50%;
+        opacity: 0;
+      }
+    }
+
+    &-descr {
+      padding-left: 40px;
+      font-size: 11px;
+      line-height: 16px;
+      color: #8c8b88;
+      font-weight: 300;
+    }
+  }
+
+  &-label {
+    font-size: 16px;
+    line-height: 20px;
+    color: #383734;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  &-input {
+    height: 36px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000;
+    font-weight: 300;
+    padding: 0 10px;
+    border: 1px solid #d1d6d9;
+    width: 100%;
+    display: block;
+    background-color: $color-white;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-select {
+    &-btn {
+      height: 36px;
+      border-radius: 3px;
+      font-size: 16px;
+      line-height: 20px;
+      color: #000;
+      font-weight: 300;
+      padding: 0 30px 0 10px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+      width: 100%;
+      background: url(../img/layout/caret.svg) center right 10px no-repeat $color-white;
+      border: 1px solid #d1d6d9;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &-group {
+      display: flex;
+      align-items: center;
+
+      .form-select {
+        flex-grow: 1;
+      }
+
+      .form-sep {
+        flex-shrink: 0;
+        width: 55px;
+      }
+
+      &-close {
+        font-size: 12px;
+        margin-left: 20px;
+        flex-shrink: 0;
+        color: #8c8b88;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      & + .adding {
+        margin-top: 5px;
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+
+  &-sep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 20px;
+      background-color: #8c8b88;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 2px 20px;
+  color: $color-white;
+  background-color: $color-main;
+  border: 1px solid transparent;
+  text-decoration: none;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+
+  &-border {
+    background-color: $color-white;
+    color: $color-main;
+    border-color: $color-main;
+  }
+
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;    
+  }
+
+  &-flat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: #8c8b88;
+
+    &:hover {
+      color: $color-main;
+    }
+  }
+
+  &-notice {
+    position: relative;
+
+    span {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 14px;
+      padding: 0 4px;
+      background-color: #f44336;
+      color: $color-white;
+      font-size: 10px;
+      line-height: 1;
+      font-family: "Ubuntu", sans-serif;
+      font-weight: 500;
+      border-radius: 7px;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+.adding {
+  font-size: 14px;
+  line-height: 20px;
+  color: #009599;
+  font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
+
+  .icon {
+    font-size: 12px;
+    margin-right: 4px;
+  }
+}
+
+.diagbg {
+  background: repeating-linear-gradient(135deg, #fff, #fff 3px, #d1d6d9 3px, #d1d6d9 6px)!important;
+}
+// Add fonts
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src: 
+  url('/fonts/HelveticaNeueCyr-Medium.woff') format('woff'),
+  url('/fonts/HelveticaNeueCyr-Medium.woff2') format('woff2');
+
+  font-weight: 300;
+  font-style: normal;
+}
+  // url('/fonts/HelveticaNeueBlackCondensed.woff') format('woff'),
+  // url('/fonts/HelveticaNeueBlackCondensed.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueBoldCondensed.woff') format('woff'),
+  // url('/fonts/HelveticaNeueBoldCondensed.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-Black.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-Black.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-Bold.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-Bold.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-Heavy.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-Heavy.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-Light.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-Light.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-Roman.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-Roman.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-Thin.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-Thin.woff2') format('woff2'),
+
+  // url('/fonts/HelveticaNeueCyr-UltraLight.woff') format('woff'),
+  // url('/fonts/HelveticaNeueCyr-UltraLight.woff2') format('woff2');
+
+  @font-face {
+    font-family: 'RockwellMT-Bold';
+    src: url('/fonts/RockwellMT-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @mixin rockwel-bold {
+    font-family: 'RockwellMT-Bold';
+    font-weight: normal;
+    font-style: normal;
+  }
+
+/* @import "../sass/example.scss"; */
+
+@import "../sass/header.scss";
+@import "../sass/landing.scss";
+@import "../sass/footer.scss";
+@import "../sass/modals.scss";
